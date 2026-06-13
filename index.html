@@ -1,209 +1,206 @@
-<!doctype html>
-Action: file_editor view /app/backend/server.py
-Observation: [Showing lines 185-200 of 436 total] /app/backend/server.py:
-185|            user_doc = await db.users.find_one({"user_id": user_id}, {"_id": 0})
-186|            if isinstance(user_doc.get('created_at'), str):
-187|                user_doc['created_at'] = datetime.fromisoformat(user_doc['created_at'])
-188|            
-189|            return User(**user_doc)
-190|    
-191|    except httpx.TimeoutException:
-192|        raise HTTPException(status_code=500, detail="Auth service timeout")
-193|    except Exception as e:
-194|        logger.error(f"Session creation error: {e}")
-195|        raise HTTPException(status_code=500, detail=str(e))
-196|
-197|@api_router.get("/auth/me")
-198|async def get_me(request: Request, session_token: Optional[str] = Cookie(None)):
-199|    """Get current user info"""
-200|    user = await get_current_user(request, session_token)
- [16 lines shown. Remaining: lines 201-436 (236 lines). Use view_range parameter to continue.]
-/* From Uiverse.io by Uncannypotato69 */ 
-.textWrapper {
-  height: fit-content;
-  min-width: 3rem;
-  width: fit-content;
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: 0.25ch;
-  position: relative;
-  z-index: 0;
-  color: white;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pie Fitness</title>
+    <style>
+        
+        body {
+            background-color: #0c0d12;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            gap: 2rem;
+        }
 
-.invertbox {
-  position: absolute;
-  height: 100%;
-  aspect-ratio: 1/1;
-  left: 0;
-  top: 0;
-  border-radius: 20%;
-  background-color: rgba(255, 255, 255, 0.1);
-  backdrop-filter: invert(100%);
-  animation: move 2s ease-in-out infinite;
-}
+      
+        .textWrapper {
+          height: fit-content;
+          min-width: 3rem;
+          width: fit-content;
+          font-size: 2rem;
+          font-weight: 700;
+          letter-spacing: 0.25ch;
+          position: relative;
+          z-index: 0;
+          color: white;
+        }
 
-@keyframes move {
-  50% {
-    left: calc(100% - 3rem);
-  }
-}
-/* From Uiverse.io by iconicchandu */ 
-.card {
-  --white: hsl(0, 0%, 100%);
-  --black: hsl(240, 15%, 9%);
-  --paragraph: hsl(0, 0%, 83%);
-  --line: hsl(240, 9%, 17%);
-  --primary: hsl(189, 92%, 58%);
+        .invertbox {
+          position: absolute;
+          height: 100%;
+          aspect-ratio: 1/1;
+          left: 0;
+          top: 0;
+          border-radius: 20%;
+          background-color: rgba(255, 255, 255, 0.1);
+          backdrop-filter: invert(100%);
+          animation: move 2s ease-in-out infinite;
+        }
 
-  position: relative;
+        @keyframes move {
+          50% {
+            left: calc(100% - 3rem);
+          }
+        }
 
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+        
+        .card {
+          --white: hsl(0, 0%, 100%);
+          --black: hsl(240, 15%, 9%);
+          --paragraph: hsl(0, 0%, 83%);
+          --line: hsl(240, 9%, 17%);
+          --primary: hsl(189, 92%, 58%);
 
-  padding: 1rem;
-  width: 19rem;
-  background-color: hsla(240, 15%, 9%, 1);
-  background-image: radial-gradient(
-      at 88% 40%,
-      hsla(240, 15%, 9%, 1) 0px,
-      transparent 85%
-    ),
-    radial-gradient(at 49% 30%, hsla(240, 15%, 9%, 1) 0px, transparent 85%),
-    radial-gradient(at 14% 26%, hsla(240, 15%, 9%, 1) 0px, transparent 85%),
-    radial-gradient(at 0% 64%, hsl(189, 99%, 26%) 0px, transparent 85%),
-    radial-gradient(at 41% 94%, hsl(189, 97%, 36%) 0px, transparent 85%),
-    radial-gradient(at 100% 99%, hsl(188, 94%, 13%) 0px, transparent 85%);
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
 
-  border-radius: 1rem;
-  box-shadow: 0px -16px 24px 0px rgba(255, 255, 255, 0.25) inset;
-}
+          padding: 1.5rem;
+          width: 19rem;
+          background-color: hsla(240, 15%, 9%, 1);
+          background-image: radial-gradient(
+              at 88% 40%,
+              hsla(240, 15%, 9%, 1) 0px,
+              transparent 85%
+            ),
+            radial-gradient(at 49% 30%, hsla(240, 15%, 9%, 1) 0px, transparent 85%),
+            radial-gradient(at 14% 26%, hsla(240, 15%, 9%, 1) 0px, transparent 85%),
+            radial-gradient(at 0% 64%, hsl(189, 99%, 26%) 0px, transparent 85%),
+            radial-gradient(at 41% 94%, hsl(189, 97%, 36%) 0px, transparent 85%),
+            radial-gradient(at 100% 99%, hsl(188, 94%, 13%) 0px, transparent 85%);
 
-.card .card__border {
-  overflow: hidden;
-  pointer-events: none;
+          border-radius: 1rem;
+          box-shadow: 0px -16px 24px 0px rgba(255, 255, 255, 0.25) inset;
+          overflow: hidden;
+        }
 
-  position: absolute;
-  z-index: -10;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+        .card .card_title__container .card_title {
+          font-size: 1.2rem;
+          font-weight: bold;
+          color: var(--white);
+          margin: 0;
+        }
 
-  width: calc(100% + 2px);
-  height: calc(100% + 2px);
-  background-image: linear-gradient(
-    0deg,
-    hsl(0, 0%, 100%) -50%,
-    hsl(0, 0%, 40%) 100%
-  );
+        .card .card_title__container .card_paragraph {
+          margin-top: 0.5rem;
+          width: 85%;
+          font-size: 0.75rem;
+          color: var(--paragraph);
+          line-height: 1.4;
+        }
 
-  border-radius: 1rem;
-}
+        .card .line {
+          width: 100%;
+          height: 0.1rem;
+          background-color: var(--line);
+          border: none;
+          margin: 0;
+        }
 
-.card .card__border::before {
-  content: "";
-  pointer-events: none;
+        .card .card__list {
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
+          padding: 0;
+          margin: 0;
+          list-style: none;
+        }
 
-  position: fixed;
-  z-index: 200;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%), rotate(0deg);
-  transform-origin: left;
+        .card .cardlist .cardlist_item {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+        }
 
-  width: 200%;
-  height: 10rem;
-  background-image: linear-gradient(
-    0deg,
-    hsla(0, 0%, 100%, 0) 0%,
-    hsl(189, 100%, 50%) 40%,
-    hsl(189, 100%, 50%) 60%,
-    hsla(0, 0%, 40%, 0) 100%
-  );
+        .card .cardlist .cardlist_item .check {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 1.2rem;
+          height: 1.2rem;
+          background-color: var(--primary);
+          border-radius: 50%;
+          flex-shrink: 0;
+        }
 
-  animation: rotate 8s linear infinite;
-}
+        .card .cardlist .cardlist_item .check svg {
+          width: 0.75rem;
+          height: 0.75rem;
+          fill: var(--black);
+        }
 
-@keyframes rotate {
-  to {
-    transform: rotate(360deg);
-  }
-}
+        .card .cardlist .cardlist_item .list_text {
+          font-size: 0.85rem;
+          color: var(--white);
+        }
+     .card .button {
+          cursor: pointer;
+          padding: 0.75rem;
+          width: 100%;
+          background-image: linear-gradient(
+            0deg,
+            hsl(189, 92%, 58%),
+            hsl(189, 99%, 26%) 100%
+          );
+          font-size: 0.85rem;
+          font-weight: bold;
+          color: var(--white);
+          border: 0;
+          border-radius: 9999px;
+          box-shadow: inset 0 -2px 25px -4px var(--white);
+          transition: transform 0.2s;
+        }
 
-.card .card_title__container .card_title {
-  font-size: 1rem;
-  color: var(--white);
-}
+        .card .button:hover {
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body>
 
-.card .card_title__container .card_paragraph {
-  margin-top: 0.25rem;
-  width: 65%;
+    <div class="textWrapper">
+        PIE.FITNESS
+        <div class="invertbox"></div>
+    </div>
 
-  font-size: 0.5rem;
-  color: var(--paragraph);
-}
+    <div class="card">
+        <div class="card_title__container">
+            <p class="card_title">Fitness & Workout</p>
+            <p class="card_paragraph">Track your exercises, cardio sessions, and daily training plans with high accuracy.</p>
+        </div>
+        
+        <hr class="line">
+        
+        <ul class="card__list">
+            <li class="card__list_item">
+                <span class="check">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                </span>
+                <span class="list_text">Custom workout plans</span>
+            </li>
+            <li class="card__list_item">
+                <span class="check">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                </span>
+                <span class="list_text">Daily progress tracking</span>
+            </li>
+            <li class="card__list_item">
+                <span class="check">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                </span>
+                <span class="list_text">Advanced analytics dashboard</span>
+            </li>
+        </ul>
+        
+        <button class="button">Start Training Now</button>
+    </div>
 
-.card .line {
-  width: 100%;
-  height: 0.1rem;
-  background-color: var(--line);
-
-  border: none;
-}
-
-.card .card__list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.card .card__list .card__list_item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.card .card__list .card__list_item .check {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  width: 1rem;
-  height: 1rem;
-  background-color: var(--primary);
-
-  border-radius: 50%;
-}
-
-.card .card__list .card__list_item .check .check_svg {
-  width: 0.75rem;
-  height: 0.75rem;
-
-  fill: var(--black);
-}
-
-.card .card__list .card__list_item .list_text {
-  font-size: 0.75rem;
-  color: var(--white);
-}
-
-.card .button {
-  cursor: pointer;
-
-  padding: 0.5rem;
-  width: 100%;
-  background-image: linear-gradient(
-    0deg,
-    hsl(189, 92%, 58%),
-    hsl(189, 99%, 26%) 100%
-  );
-
-  font-size: 0.75rem;
-  color: var(--white);
-
-  border: 0;
-  border-radius: 9999px;
-  box-shadow: inset 0 -2px 25px -4px var(--white);
-} 
+</body>
 </html>
