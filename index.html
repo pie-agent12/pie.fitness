@@ -416,9 +416,56 @@
             displayBox.scrollIntoView({ behavior: 'smooth' });
         }
     </script>
+<script>
+        function startFitnessLogic() {
+            let age = prompt("Step 1: Enter your Age (years):");
+            if (!age) return;
 
+            let weight = prompt("Step 2: Enter your Weight (kg):");
+            if (!weight) return;
+
+            let height = prompt("Step 3: Enter your Height (cm):");
+            if (!height) return;
+
+            age = parseFloat(age);
+            weight = parseFloat(weight);
+            height = parseFloat(height);
+
+            let heightInMeters = height / 100;
+            let bmi = weight / (heightInMeters * heightInMeters);
+
+            let displayBox = document.getElementById('workoutDisplay');
+            let statsText = document.getElementById('userStatsText');
+            let list = document.getElementById('routineList');
+            let title = document.getElementById('routineTitle');
+            
+            statsText.innerHTML = <b>Profile:</b> ${age} yrs | ${weight} kg | ${height} cm<br><b>BMI:</b> ${bmi.toFixed(1)};
+            
+            if (bmi < 18.5) {
+                title.innerText = "💪 Muscle Gain Plan (ضخامة وعضل)";
+                list.innerHTML = "<li>🏋️‍♂️ 4 Sets of Heavy Dumbbell Squats</li>" +
+                                 "<li>💪 3 Sets of Pull-ups or Lat Pulldowns</li>" +
+                                 "<li>🔥 4 Sets of Diamond Push-ups</li>" +
+                                 "<li>🍌 Eat 500+ extra calories today!</li>";
+            } else if (bmi >= 18.5 && bmi < 25) {
+                title.innerText = "⚡ Shred & Tone Plan (تقسيم ولياقة)";
+                list.innerHTML = "<li>🏃‍♂️ 15 Mins High-Intensity Cardio (HIIT)</li>" +
+                                 "<li>🏋️‍♂️ 3 Sets of Jump Squats</li>" +
+                                 "<li>🔥 3 Sets of Standard Push-ups</li>" +
+                                 "<li>⏱️ 2 Mins Plank Hold</li>";
+            } else {
+                title.innerText = "🔥 Fat Burn & Cardio Plan (حرق دهون مكثف)";
+                list.innerHTML = "<li>🏃‍♂️ 25 Mins Fast Pace Treadmill Run</li>" +
+                                 "<li>💦 4 Sets of Burpees (12 Reps)</li>" +
+                                 "<li>🚴‍♂️ 10 Mins Stationary Cycling</li>" +
+                                 "<li>🥗 Focus on High Protein & Low Carbs today!</li>";
+            }
+            
+            displayBox.style.display = "block";
+            displayBox.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
 </body>
 </html>
-        .card .cardlist .cardlist_item .check svg {
-          width:
+        when you wanna win you have take risks
             
