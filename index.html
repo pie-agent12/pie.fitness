@@ -128,6 +128,136 @@
           border-radius: 50%;
           flex-shrink: 0;
         }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pie Fitness</title>
+    <style>
+        body {
+            background-color: #0c0d12;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            gap: 1.5rem;
+            padding: 1rem;
+            box-sizing: border-box;
+        }
+
+        .textWrapper {
+          height: fit-content;
+          min-width: 3rem;
+          width: fit-content;
+          font-size: 1.6rem;
+          font-weight: 700;
+          letter-spacing: 0.25ch;
+          position: relative;
+          z-index: 1;
+          color: white;
+          margin-bottom: 0.5rem;
+        }
+
+        .invertbox {
+          position: absolute;
+          height: 100%;
+          aspect-ratio: 1/1;
+          left: 0;
+          top: 0;
+          border-radius: 20%;
+          background-color: rgba(255, 255, 255, 0.1);
+          backdrop-filter: invert(100%);
+          animation: move 2s ease-in-out infinite;
+        }
+
+        @keyframes move {
+          50% {
+            left: calc(100% - 2.5rem);
+          }
+        }
+
+        .card {
+          --white: hsl(0, 0%, 100%);
+          --black: hsl(240, 15%, 9%);
+          --paragraph: hsl(0, 0%, 83%);
+          --line: hsl(240, 9%, 17%);
+          --primary: hsl(189, 92%, 58%);
+
+          position: relative;
+          z-index: 5;
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+
+          padding: 1.5rem;
+          width: 100%;
+          max-width: 19rem;
+          background-color: hsla(240, 15%, 9%, 1);
+          background-image: radial-gradient(at 88% 40%, hsla(240, 15%, 9%, 1) 0px, transparent 85%),
+            radial-gradient(at 49% 30%, hsla(240, 15%, 9%, 1) 0px, transparent 85%),
+            radial-gradient(at 14% 26%, hsla(240, 15%, 9%, 1) 0px, transparent 85%),
+            radial-gradient(at 0% 64%, hsl(189, 99%, 26%) 0px, transparent 85%),
+            radial-gradient(at 41% 94%, hsl(189, 97%, 36%) 0px, transparent 85%),
+            radial-gradient(at 100% 99%, hsl(188, 94%, 13%) 0px, transparent 85%);
+
+          border-radius: 1rem;
+          box-shadow: 0px -16px 24px 0px rgba(255, 255, 255, 0.25) inset;
+          overflow: hidden;
+          box-sizing: border-box;
+        }
+
+        .card .card_title__container .card_title {
+          font-size: 1.2rem;
+          font-weight: bold;
+          color: var(--white);
+          margin: 0;
+        }
+
+        .card .card_title__container .card_paragraph {
+          margin-top: 0.5rem;
+          width: 85%;
+          font-size: 0.75rem;
+          color: var(--paragraph);
+          line-height: 1.4;
+        }
+
+        .card .line {
+          width: 100%;
+          height: 0.1rem;
+          background-color: var(--line);
+          border: none;
+          margin: 0;
+        }
+
+        .card .card__list {
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
+          padding: 0;
+          margin: 0;
+          list-style: none;
+        }
+
+        .card .cardlist .cardlist_item {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+        }
+
+        .card .cardlist .cardlist_item .check {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 1.2rem;
+          height: 1.2rem;
+          background-color: var(--primary);
+          border-radius: 50%;
+          flex-shrink: 0;
+        }
 
         .card .cardlist .cardlist_item .check svg {
           width: 0.75rem;
@@ -137,7 +267,9 @@
 
         .card .cardlist .cardlist_item .list_text {
           font-size: 0.85rem;
-        .card .button {
+          color: var(--white);
+        }
+       .card .button {
           cursor: pointer;
           padding: 0.75rem;
           width: 100%;
@@ -150,7 +282,7 @@
           box-shadow: inset 0 -2px 25px -4px var(--white);
           transition: transform 0.2s;
           position: relative;
-          z-index: 9999; /* رفعنا الأولوية لأعلى درجة بالمتصفح */
+          z-index: 9999; /* أولية قصوى للزر عشان ينداس بدون قفل الشاشة */
         }
 
         .card .button:hover {
@@ -253,7 +385,6 @@
 
             let heightInMeters = height / 100;
             let bmi = weight / (heightInMeters * heightInMeters);
-
             let displayBox = document.getElementById('workoutDisplay');
             let statsText = document.getElementById('userStatsText');
             let list = document.getElementById('routineList');
@@ -288,5 +419,6 @@
 
 </body>
 </html>
-          color: var(--white);
-        }
+        .card .cardlist .cardlist_item .check svg {
+          width:
+            
