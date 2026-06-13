@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pie Fitness</title>
     <style>
-        
         body {
             background-color: #0c0d12;
             display: flex;
@@ -18,7 +17,6 @@
             gap: 2rem;
         }
 
-      
         .textWrapper {
           height: fit-content;
           min-width: 3rem;
@@ -49,7 +47,6 @@
           }
         }
 
-        
         .card {
           --white: hsl(0, 0%, 100%);
           --black: hsl(240, 15%, 9%);
@@ -140,7 +137,7 @@
           font-size: 0.85rem;
           color: var(--white);
         }
-     .card .button {
+        .card .button {
           cursor: pointer;
           padding: 0.75rem;
           width: 100%;
@@ -160,6 +157,37 @@
 
         .card .button:hover {
             transform: scale(1.02);
+        }
+
+        
+        .workout-table {
+            display: none;
+            width: 19rem;
+            background-color: #1a1b23;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            box-sizing: border-box;
+        }
+        .workout-table h3 {
+            margin-top: 0;
+            color: hsl(189, 92%, 58%);
+            font-size: 1.1rem;
+        }
+        .workout-table p {
+            font-size: 0.8rem;
+            color: #b3b4bd;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+        .workout-table ul {
+            padding-left: 1.2rem;
+            margin: 0;
+        }
+        .workout-table li {
+            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
         }
     </style>
 </head>
@@ -201,15 +229,47 @@
         
         <button class="button">Start Training Now</button>
     </div>
-</div>
+
+    <div id="workoutDisplay" class="workout-table">
+        <h3 id="routineTitle">Custom Training Plan</h3>
+        <p id="userStatsText"></p>
+        <hr style="border: 0; height: 1px; background: #333; margin-bottom: 1rem;">
+        <ul id="routineList"></ul>
+    </div>
 
     <script>
         document.querySelector('.button').addEventListener('click', function() {
-            alert('Let\'s go champ! Your fitness workout plan has started! 💪🔥');
+       
+            let age = prompt("Step 1: Enter your Age (years):");
+            if (age === null || age.trim() === "") return;
+
+            let weight = prompt("Step 2: Enter your Weight (kg):");
+            if (weight === null || weight.trim() === "") return;
+
+            let height = prompt("Step 3: Enter your Height (cm):");
+            if (height === null || height.trim() === "") return;
+
+         
+            let displayBox = document.getElementById('workoutDisplay');
+            let statsText = document.getElementById('userStatsText');
+            let list = document.getElementById('routineList');
+            
+          
+            statsText.innerText = "Target Profile initialized: " + age + " years old, " + weight + " kg, " + height + " cm.";
+            
+           
+            list.innerHTML = "<li>⚡ 10 Mins Warm-up Run</li>" +
+                             "<li>💪 4 Sets of Bodyweight Squats</li>" +
+                             "<li>🔥 3 Sets of Push-ups (Max Reps)</li>" +
+                             "<li>⏱️ 2 Mins Core Plank Hold</li>" +
+                             "<li>🧘 5 Mins Post-Workout Stretching</li>";
+            
+           
+            displayBox.style.display = "block";
+            displayBox.scrollIntoView({ behavior: 'smooth' });
         });
     </script>
 
 </body>
 </html>
-
-
+        
